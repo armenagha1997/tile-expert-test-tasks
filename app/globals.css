@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+  --color-kiln-bg: var(--kiln-bg);
+  --color-kiln-navy: var(--kiln-navy);
+  --color-kiln-terracotta: var(--kiln-terracotta);
+  --color-kiln-green: var(--kiln-green);
+  --color-kiln-sand: var(--kiln-sand);
+
+  --font-sans: var(--font-sans), system-ui, sans-serif;
+  --font-display: var(--font-display), Georgia, serif;
+}
+
+:root {
+  --kiln-bg: #F4EFE6;
+  --kiln-navy: #2C4373;
+  --kiln-terracotta: #C97A53;
+  --kiln-green: #4A7A61;
+  --kiln-sand: #E6DEC9;
+}
+
+.dark {
+  --kiln-bg: #1E1B18;
+  --kiln-navy: #A5BAD9;
+  --kiln-terracotta: #E2956F;
+  --kiln-green: #689E82;
+  --kiln-sand: #3A352E;
+}
+
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-kiln-bg);
+    color: var(--color-kiln-navy);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+}
