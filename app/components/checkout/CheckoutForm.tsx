@@ -65,7 +65,6 @@ export const CheckoutForm: React.FC = () => {
 
     const onSubmit = async (data: CheckoutFormInputs) => {
         await new Promise((resolve) => setTimeout(resolve, 1500));
-        alert(`Заказ успешно оформлен! Итого к оплате: $${grandTotal.toFixed(2)}\nСпособ оплаты: ${data.paymentMethod}`);
         console.log('Order Data Submitted:', data);
     };
 
