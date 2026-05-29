@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {removeItem} from "@/store/cartSlice";
+import {removeItem, updateQuantity} from "@/store/cartSlice";
 import {AVAILABLE_EXTRA_TILES} from "@/constants/tiles";
 
 interface HistoryItem {
@@ -83,6 +83,42 @@ const designSlice = createSlice({
                     row.map(cell => cell === targetImage ? null : cell)
                 );
                 state.history = state.history.filter(h => h.tileImage !== targetImage);
+            }
+        }).addCase(updateQuantity, (state, action) => {
+            const { id, quantity } = action.payload;
+
+            const tile = AVAILABLE_EXTRA_TILES.find(t => t.id === id);
+            const targetImage = tile ? tile.patternImage : null;
+
+            if (!targetImage) return;
+
+            if (quantity <= 0) {
+                state.history = state.history.filter(h => h.tileImage !== targetImage);
+
+                state.grid = state.grid.map(row =>
+                    row.map(cell => cell === targetImage ? null : cell)
+                );
+                return;
+            }
+            const currentTilesInHistory = state.history.filter(h => h.tileImage === targetImage);
+            const currentCountOnGrid = currentTilesInHistory.length;
+
+            if (currentCountOnGrid > quantity) {
+                const excessCount = currentCountOnGrid - quantity;
+
+                for (let i = 0; i < excessCount; i++) {
+                    const lastMatchIndex = state.history.map(h => h.tileImage).lastIndexOf(targetImage);
+
+                    if (lastMatchIndex !== -1) {
+                        const itemToRemove = state.history[lastMatchIndex];
+
+                        if (state.grid[itemToRemove.row]?.[itemToRemove.col] === targetImage) {
+                            state.grid[itemToRemove.row][itemToRemove.col] = null;
+                        }
+
+                        state.history.splice(lastMatchIndex, 1);
+                    }
+                }
             }
         });
     }

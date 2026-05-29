@@ -30,9 +30,15 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         updateQuantity: (state, action: PayloadAction<{ id: string; quantity: number }>) => {
-            const item = state.items.find(i => i.id === action.payload.id);
-            if (item) {
-                item.quantity = Math.max(0, action.payload.quantity);
+            const { id, quantity } = action.payload;
+            const itemIndex = state.items.findIndex(i => i.id === id);
+
+            if (itemIndex !== -1) {
+                if (quantity <= 0) {
+                    state.items.splice(itemIndex, 1);
+                } else {
+                    state.items[itemIndex].quantity = quantity;
+                }
             }
             Object.assign(state, calculateTotals(state.items));
         },
