@@ -14,6 +14,8 @@ const navLinks = [
     {name: 'BLOG', href: '#blog'},
 ];
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
 export const Header: React.FC = () => {
     const items = useAppSelector((state) => state.cart.items);
     const activeItemsCount = items.filter(item => item.quantity > 0).length;
@@ -171,20 +173,20 @@ export const Header: React.FC = () => {
                         CERAMIC TILE ORDER FORM
                     </h1>
                     <div className="flex items-center gap-4 mt-1.5 mb-1 text-[10px] font-bold select-none">
-                        <img src={`${process.env.NEXT_PUBLIC_BASE_PATH}/tiles/navy.png`} alt="Navy tile icon"
+                        <img src={`${basePath}/tiles/navy.png`} alt="Navy tile icon"
                              className="w-8 h-8 rounded-sm object-cover shadow-sm grayscale-[10%] hover:grayscale-0 transition-all duration-200"/>
-                        <img src={`${process.env.NEXT_PUBLIC_BASE_PATH}/tiles/terracotta.png`} alt="Terracotta tile icon"
+                        <img src={`${basePath}/tiles/terracotta.png`} alt="Terracotta tile icon"
                              className="w-8 h-8 rounded-sm object-cover shadow-sm opacity-90"/>
-                        <img src={`${process.env.NEXT_PUBLIC_BASE_PATH}/tiles/sage.png`} alt="Sage tile icon"
+                        <img src={`${basePath}/tiles/sage.png`} alt="Sage tile icon"
                              className="w-8 h-8 rounded-sm object-cover shadow-sm"/>
                         <span className="mx-3 tracking-widest text-lg sm:text-xl md:text-2xl text-kiln-navy font-mono font-bold uppercase">
                           THE ARTISAN KILN
                         </span>
-                        <img src={`${process.env.NEXT_PUBLIC_BASE_PATH}/tiles/geometric.png`} alt="Geometric Kiln"
+                        <img src={`${basePath}/tiles/geometric.png`} alt="Geometric Kiln"
                                     className="w-8 h-8 rounded-sm object-cover shadow-sm"/>
-                        <img src={`${process.env.NEXT_PUBLIC_BASE_PATH}/tiles/flora.png`} alt="Vintage Flora"
+                        <img src={`${basePath}/tiles/flora.png`} alt="Vintage Flora"
                              className="w-8 h-8 rounded-sm object-cover shadow-sm opacity-90 hover:opacity-100 transition-opacity duration-200"/>
-                        <img src={`${process.env.NEXT_PUBLIC_BASE_PATH}/tiles/golden.png`} alt="Golden Herringbone"
+                        <img src={`${basePath}/tiles/golden.png`} alt="Golden Herringbone"
                              className="w-8 h-8 rounded-sm object-cover shadow-sm grayscale-[10%] hover:grayscale-0 transition-all duration-200"/>
                     </div>
                 </div>
