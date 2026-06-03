@@ -1,6 +1,8 @@
 import { TileItem } from '@/types';
 
-export const AVAILABLE_EXTRA_TILES: TileItem[] = [
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
+
+const EXTRA_TILES: TileItem[] = [
     { id: '1', name: 'MEDITERRANEAN LACE', image: '/tiles/lace.png', patternImage: '/tiles/lace.png', quantity: 0, unitPrice: 32.00 },
     { id: '2', name: 'MOROCCAN STAR', image: '/tiles/moroccan.png', patternImage: '/tiles/moroccan.png', quantity: 0, unitPrice: 35.00 },
     { id: '3', name: 'SAGE HERRINGBONE', image: '/tiles/sage.png', patternImage: '/tiles/sage.png', quantity: 0, unitPrice: 27.00 },
@@ -12,3 +14,9 @@ export const AVAILABLE_EXTRA_TILES: TileItem[] = [
     { id: '9', name: 'VINTAGE FLORA', image: '/tiles/flora.png', patternImage: '/tiles/flora.png', quantity: 0, unitPrice: 36.00 },
     { id: '10', name: 'GOLDEN HERRINGBONE', image: '/tiles/golden.png', patternImage: '/tiles/golden.png', quantity: 0, unitPrice: 26.00 }
 ];
+
+export const AVAILABLE_EXTRA_TILES: TileItem[] = EXTRA_TILES.map(tile => ({
+    ...tile,
+    image: `${basePath}${tile.image}`,
+    patternImage: `${basePath}${tile.patternImage}`
+}));
