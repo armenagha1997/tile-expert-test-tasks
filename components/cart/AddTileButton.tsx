@@ -1,11 +1,14 @@
 'use client';
 
-import React, {useState} from 'react';
-import {useAppDispatch, useAppSelector} from '@/store/hooks';
-import {addNewTile} from '@/store/cartSlice';
-import {TileItem} from '@/types';
-import {useOutsideClick} from "@/hooks/useOutsideClick";
-import {AVAILABLE_EXTRA_TILES} from "@/constants/tiles";
+import React, { useState } from 'react';
+import { useAppDispatch, useAppSelector } from '@/store/hooks';
+import { addNewTile } from '@/store/cartSlice';
+import { TileItem } from '@/types';
+import { useOutsideClick } from "@/hooks/useOutsideClick";
+import { AVAILABLE_EXTRA_TILES } from "@/constants/tiles";
+
+import addCartImg from '@/public/add_cart.png';
+import laceTileImg from '@/public/tiles/lace.png';
 
 export const AddTileButton: React.FC = () => {
     const dispatch = useAppDispatch();
@@ -22,7 +25,7 @@ export const AddTileButton: React.FC = () => {
     );
 
     const handleSelectTile = (tile: TileItem) => {
-        dispatch(addNewTile({...tile, quantity: 10}));
+        dispatch(addNewTile({ ...tile, quantity: 10 }));
         setIsOpen(false);
     };
 
@@ -30,7 +33,7 @@ export const AddTileButton: React.FC = () => {
         <div className="relative inline-block">
             <div className="flex items-start gap-3">
                 <img
-                    src="/add_cart.png"
+                    src={addCartImg.src}
                     alt="Add Cart"
                     className="w-auto h-12 rounded-sm object-cover"
                 />
@@ -41,8 +44,8 @@ export const AddTileButton: React.FC = () => {
                 >
                     <span className="text-lg leading-none font-bold">+</span>
                     <img
-                        src="/tiles/lace.png"
-                        alt="Add Cart"
+                        src={laceTileImg.src}
+                        alt="Lace prevew"
                         className="w-auto h-4 mr-2 object-cover"
                     />
                     <span>ADD NEW TILE TO CART</span>
