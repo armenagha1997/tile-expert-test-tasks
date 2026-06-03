@@ -2,8 +2,8 @@
 
 import { Provider } from 'react-redux';
 import { configureStore } from '@reduxjs/toolkit';
-import designReducer from './designSlice';
-import cartReducer from './cartSlice';
+import designReducer from '@/store/designSlice';
+import cartReducer from '@/store/cartSlice';
 
 const store = configureStore({
     reducer: {

@@ -4,7 +4,7 @@ import React from 'react';
 import { useAppDispatch, useAppSelector } from '@/store/hooks';
 import { removeItem, updateQuantity } from '@/store/cartSlice';
 import { AnimatePresence, motion } from 'framer-motion';
-import { AddTileButton } from './AddTileButton';
+import { AddTileButton } from '@/components/cart/AddTileButton';
 import { clearTileFromGrid } from "@/store/designSlice";
 
 export const CartTable: React.FC = () => {
