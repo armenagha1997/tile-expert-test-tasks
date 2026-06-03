@@ -1,9 +1,11 @@
 /** @type {import('next').NextConfig} */
+const isProd = process.env.NODE_ENV === 'production';
+
 const nextConfig = {
     output: 'export',
     distDir: 'build',
-    basePath: '/tile-expert-test-tasks',
-    assetPrefix: '/tile-expert-test-tasks/',
+    basePath: isProd ? '/tile-expert-test-tasks' : '',
+    assetPrefix: isProd ? '/tile-expert-test-tasks/' : '',
     images: {
         unoptimized: true,
     },

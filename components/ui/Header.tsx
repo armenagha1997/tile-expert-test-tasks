@@ -1,20 +1,25 @@
 'use client';
 
-import React, {useEffect, useState} from 'react';
-import {useAppSelector} from '@/store/hooks';
-import {useOutsideClick} from "@/hooks/useOutsideClick";
+import React, { useEffect, useState } from 'react';
+import { useAppSelector } from '@/store/hooks';
+import { useOutsideClick } from "@/hooks/useOutsideClick";
+
+import navyTile from '@/public/tiles/navy.png';
+import terracottaTile from '@/public/tiles/terracotta.png';
+import sageTile from '@/public/tiles/sage.png';
+import geometricTile from '@/public/tiles/geometric.png';
+import floraTile from '@/public/tiles/flora.png';
+import goldenTile from '@/public/tiles/golden.png';
 
 const navLinks = [
-    {name: 'HOME', href: '#home'},
-    {name: 'SHOP', href: '#shop'},
-    {name: 'COLLECTIONS', href: '#collections'},
-    {name: 'ABOUT US', href: '#about'},
-    {name: 'FAQ', href: '#faq'},
-    {name: 'GALLERY', href: '#gallery'},
-    {name: 'BLOG', href: '#blog'},
+    { name: 'HOME', href: '#home' },
+    { name: 'SHOP', href: '#shop' },
+    { name: 'COLLECTIONS', href: '#collections' },
+    { name: 'ABOUT US', href: '#about' },
+    { name: 'FAQ', href: '#faq' },
+    { name: 'GALLERY', href: '#gallery' },
+    { name: 'BLOG', href: '#blog' },
 ];
-
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export const Header: React.FC = () => {
     const items = useAppSelector((state) => state.cart.items);
@@ -173,25 +178,24 @@ export const Header: React.FC = () => {
                         CERAMIC TILE ORDER FORM
                     </h1>
                     <div className="flex items-center gap-4 mt-1.5 mb-1 text-[10px] font-bold select-none">
-                        <img src={`${basePath}/tiles/navy.png`} alt="Navy tile icon"
+                        <img src={navyTile.src} alt="Navy tile icon"
                              className="w-8 h-8 rounded-sm object-cover shadow-sm grayscale-[10%] hover:grayscale-0 transition-all duration-200"/>
-                        <img src={`${basePath}/tiles/terracotta.png`} alt="Terracotta tile icon"
+                        <img src={terracottaTile.src} alt="Terracotta tile icon"
                              className="w-8 h-8 rounded-sm object-cover shadow-sm opacity-90"/>
-                        <img src={`${basePath}/tiles/sage.png`} alt="Sage tile icon"
+                        <img src={sageTile.src} alt="Sage tile icon"
                              className="w-8 h-8 rounded-sm object-cover shadow-sm"/>
                         <span className="mx-3 tracking-widest text-lg sm:text-xl md:text-2xl text-kiln-navy font-mono font-bold uppercase">
                           THE ARTISAN KILN
                         </span>
-                        <img src={`${basePath}/tiles/geometric.png`} alt="Geometric Kiln"
-                                    className="w-8 h-8 rounded-sm object-cover shadow-sm"/>
-                        <img src={`${basePath}/tiles/flora.png`} alt="Vintage Flora"
+                        <img src={geometricTile.src} alt="Geometric Kiln"
+                             className="w-8 h-8 rounded-sm object-cover shadow-sm"/>
+                        <img src={floraTile.src} alt="Vintage Flora"
                              className="w-8 h-8 rounded-sm object-cover shadow-sm opacity-90 hover:opacity-100 transition-opacity duration-200"/>
-                        <img src={`${basePath}/tiles/golden.png`} alt="Golden Herringbone"
+                        <img src={goldenTile.src} alt="Golden Herringbone"
                              className="w-8 h-8 rounded-sm object-cover shadow-sm grayscale-[10%] hover:grayscale-0 transition-all duration-200"/>
                     </div>
                 </div>
             </div>
-
         </div>
     );
 };
